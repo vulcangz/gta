@@ -1,0 +1,33 @@
+syntax = "proto3";
+option go_package = "/gtr/api/comm/v1";
+
+service Gtr {
+  // ServerStream
+  rpc Translate(TranslateRequest) returns (stream TranslateResponse);
+}
+
+// Usage provides details usage information for the request.
+message Usage {
+  int64  PromptTokens        = 1;
+  int64  ReasoningTokens     = 2;
+  int64  CompletionTokens    = 3;
+  int64  OutputTokens        = 4;
+  int64  TotalTokens         = 5;
+  double TokensPerSecond     = 6;
+  double TimeToFirstTokenMS  = 7;
+  int64  DraftTokens         = 8;
+  int64  DraftAcceptedTokens = 9;
+  double DraftAcceptanceRate = 10;
+}
+
+message TranslateRequest {
+  string source = 1;
+  string target = 2;
+  string apiKey = 3;
+  string text   = 4;
+}
+
+message TranslateResponse {
+  string message = 1;
+  Usage  usage   = 2;
+}

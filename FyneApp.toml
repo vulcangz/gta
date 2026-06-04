@@ -1,0 +1,8 @@
+Website = "https://www.worldlink.com.cn"
+
+[Details]
+  Icon = "Icon.png"
+  Name = "GTR"
+  ID = "cn.osdir.gta"
+  Version = "0.1.0"
+  Build = 10
