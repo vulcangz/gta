@@ -268,8 +268,7 @@ func (h *Handler) SettingsButtonClick() {
 
 func (h *Handler) translate(addr, inputLang, outputLang, text string) (string, error) {
 	var (
-		responses []StreamResponse
-		rest      []string
+		content strings.Builder
 	)
 	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -307,16 +306,10 @@ func (h *Handler) translate(addr, inputLang, outputLang, text string) (string, e
 		}
 
 		// Record received message
-		response := StreamResponse{
-			Message:   res.Message,
-			Timestamp: time.Now(),
-			Direction: "received",
-		}
-		responses = append(responses, response)
-		rest = append(rest, response.Message)
+		content.WriteString(res.Message)
 	}
 
-	return strings.Join(rest, ""), nil
+	return content.String(), nil
 }
 
 func createPrompt(source, target, text string) string {
