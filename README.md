@@ -124,6 +124,7 @@ ENVIRONMENT
 
 
 ## Screenshot
+Original source: [Luoyang, the peony city that stole a British girl's heart](https://www.ecns.cn/travel/2026-06-02/detail-ihffcfqs3229531.shtml)
 
 ![Screenshot](screenshot.png)
 
